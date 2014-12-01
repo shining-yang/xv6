@@ -14,9 +14,20 @@ printf(int fd, char *s, ...)
 }
 
 void
+test_syscall_setrlimit()
+{
+  int ret = -1;
+  printf(1, "We'll make a system call (setrlimit) ...\n");
+  ret = setrlimit(4096);
+  (void)ret;
+}
+
+void
 forktest(void)
 {
   int n, pid;
+
+  test_syscall_setrlimit();
 
   printf(1, "fork test\n");
 
