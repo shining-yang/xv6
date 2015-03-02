@@ -33,5 +33,8 @@ main(void)
     }
     while((wpid=wait()) >= 0 && wpid != pid)
       printf(1, "zombie!\n");
+
+    // Shining, debugging
+    printf(1, "init detected that sh has exited, and will fork a new one.\n");
   }
 }

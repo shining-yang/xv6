@@ -39,6 +39,8 @@ main(void)
   kinit2(P2V(4*1024*1024), P2V(PHYSTOP)); // must come after startothers()
   userinit();      // first user process
   // Finish setting up this processor in mpmain.
+  // Shining, debugging
+  cprintf("kpgdir is: %x\n", kpgdir);
   mpmain();
 }
 
@@ -78,6 +80,9 @@ startothers(void)
   // _binary_entryother_start.
   code = p2v(0x7000);
   memmove(code, _binary_entryother_start, (uint)_binary_entryother_size);
+
+  // Shining, debugging
+  cprintf("_binary_entryother_start: %x, %d\n", _binary_entryother_start, _binary_entryother_size);
 
   for(c = cpus; c < cpus+ncpu; c++){
     if(c == cpus+cpunum())  // We've started already.
