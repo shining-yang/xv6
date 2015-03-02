@@ -448,7 +448,6 @@ procdump(void)
   uint pc[10];
   
   cprintf("\nDump all processes ...\n");
-
   for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
     if(p->state == UNUSED)
       continue;
@@ -465,3 +464,20 @@ procdump(void)
     cprintf("\n");
   }
 }
+
+// Set resource limit for process. (system call stub)
+// Shining Yang <y.s.n@live.com>, 2014-12-01
+int
+sys_setrlimit()
+{
+  int lmt = 0;
+
+  cprintf(" >Implementation of sys_setrlimit(). Just a stub, not implemented yet.\n");
+  if (argint(0, &lmt) < 0) {
+    return -1;
+  }
+
+  cprintf(" >sys_setrlimit, passed in parameter: %d\n", lmt);
+  return 0;
+}
+

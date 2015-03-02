@@ -149,7 +149,6 @@ void
 kvmalloc(void)
 {
   kpgdir = setupkvm();
-  cprintf("kpgdir in kvmalloc() is: %x\n", kpgdir);
   switchkvm();
 }
 
